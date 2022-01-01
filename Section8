@@ -1,0 +1,47 @@
+#include <iostream>
+
+int main() {
+
+    int dollarVal{100};
+    int quarterVal{25};
+    int dimeVal{10};
+    int nickelVal{5};
+    int pennyVal{1};
+
+    int dollars{0};
+    int quarters{0};
+    int dimes{0};
+    int nickels{0};
+    int pennies{0};
+
+    std::cout << "Enter an Integer representing the number of cents" << std::endl;
+    double numToConvert{0};
+    std::cin >> numToConvert;
+
+    //Break it down by dollars
+    std::cout  << "Convert to Change: " << numToConvert << "\n";
+    dollars = numToConvert / dollarVal;
+    numToConvert = numToConvert % dollarVal;
+    //Break it down by quarters
+    quarters = numToConvert / quarterVal;
+    numToConvert = numToConvert % quarterVal;
+    //Dimes
+    dimes = numToConvert / dimeVal;
+    numToConvert = numToConvert % dimeVal;
+    //Nickels
+    nickels = numToConvert / nickelVal;
+    numToConvert = numToConvert % nickelVal;
+    //Pennies
+    pennies = numToConvert / pennyVal;
+    numToConvert = numToConvert % pennyVal;
+
+    //Display currency
+    std::cout << "Dollars: " << dollars << "\n";
+    std::cout << "Quarters: " << quarters << "\n";
+    std::cout << "Dimes: " << dimes << "\n";
+    std::cout << "Nickels: " << nickels << "\n";
+    std::cout << "Pennies: " << pennies << "\n";
+
+
+    return 0;
+}

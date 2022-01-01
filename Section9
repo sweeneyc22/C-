@@ -51,9 +51,9 @@ int main() {
                 break;
             case 'q' :
                 std::cout << "Goodbye!";
-                break;
+                return 0;
             default:
-                std::cout << "Invalid option, try again";
+                std::cout << "Invalid option" << "\n";
                 break;
         }
         std::cout << "\n" << "Return to the main menu?" << "\n" << "\n" << "'Y' for yes, anything else for no" << "\n";

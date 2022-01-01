@@ -1,0 +1,120 @@
+#include <iostream>
+#include <list>
+
+
+void add_element(std::list<int> &list);
+
+void print_elements(std::list<int> list);
+
+void display_menu();
+
+void return_mean(std::list<int> list);
+
+void return_smallest(std::list<int> list1);
+
+void return_largest(std::list<int> list1);
+
+int main() {
+    std::list<int> myList{9, 8, 7, 6, 5, 4, 3, 2, 1};
+
+
+    char option{'n'};
+
+    do {
+
+        display_menu();
+        char choice;
+        std::cin >> choice;
+
+        switch (tolower(choice)) {
+            case 'p' :
+                std::cout << "Printing elements..." << "\n" << "\n";;
+                print_elements(myList);
+                break;
+            case 'a' :
+                std::cout << "Adding an element to the list... " << "\n" << "\n";
+                std::cout << "Enter the integer to add to the list" << "\n";
+                add_element(myList);
+
+                break;
+            case 'm':
+                std::cout << "\n" << "Return Mean" << "\n";
+                return_mean(myList);
+                break;
+            case 's' :
+                std::cout << "\n" << "Return Smallest" << "\n";
+                return_smallest(myList);
+                break;
+            case 'l' :
+                std::cout << "\n" << "Return Largest" << "\n";
+                return_largest(myList);
+                break;
+            case 'q' :
+                std::cout << "Goodbye!";
+                break;
+            default:
+                std::cout << "Invalid option, try again";
+                break;
+        }
+        std::cout << "\n" << "Return to the main menu?" << "\n" << "\n" << "'Y' for yes, anything else for no" << "\n";
+        std::cin >> option;
+    } while (tolower(option) == 'y');
+
+
+}
+
+void return_largest(std::list<int> list1) {
+    int temp = list1.front();
+    for (int i: list1) {
+        if (i > temp) {
+            temp = i;
+        }
+    }
+    std::cout << "Largest Number is: " << temp << "\n";
+}
+
+void return_smallest(std::list<int> list1) {
+    int temp = list1.front();
+    for (int i: list1) {
+        if (i < temp) {
+            temp = i;
+        }
+    }
+    std::cout << "Smallest Number is: " << temp << "\n";
+}
+
+void return_mean(std::list<int> list) {
+    int sum{0};
+    for (int x: list) {
+        sum += x;
+    }
+    std::cout << "Mean of list: " << sum / list.size();
+}
+
+
+void add_element(std::list<int> &list) {
+    int element{};
+    std::cin >> element;
+    list.push_back(element);
+    std::cout << element << " added to list";
+}
+
+
+void print_elements(std::list<int> list) {
+    for (int i: list) {
+        std::cout << i << " ";
+    }
+    std::cout << "\n";
+}
+
+void display_menu() {
+    std::cout << "-----------------------------------" << "\n";
+    std::cout << "Hello, Choose an option!" << "\n" << "\n";
+    std::cout << "'P' - Print all elements in the list" << "\n";
+    std::cout << "'A' - Add and integer to the list" << "\n";
+    std::cout << "'M' - Return the mean of the list" << "\n";
+    std::cout << "'S' - Return the smallest element" << "\n";
+    std::cout << "'L' - Return the largest element" << "\n";
+    std::cout << "'Q' - Quit" << "\n";
+    std::cout << "-----------------------------------" << "\n";
+}

@@ -1,1 +1,54 @@
 
+/* Section 10
+ * Substitution Cipher
+ * Each letter of alphabet, replaced with another letter of alphabet.
+ *
+ * Write a program that asks a user to enter a message
+ *
+ * Encrypt the message using the substitution cipher & display it
+ * Decrypt the message and display it
+ */ 
+
+
+
+
+#include <iostream>
+#include <string>
+
+
+int main() {
+    std::string alphabet("abcdefghijklmnopqrstuvwxyz ");
+    std::string key("1234567890-=!@#$%^&*()_+[]V");
+
+    std::cout << "Hello, enter a message to encrypt!" << "\n";
+
+    std::string message{""};
+    std::getline(std::cin, message);
+
+    std::string encryptedMessage;
+
+
+    for (char c: message) {
+        tolower(c);
+        std::cout << c;
+        size_t position = alphabet.find(c);
+        c = key.at(position);
+        std::cout << "-> \t" << c << "\n";
+        encryptedMessage.push_back(c);
+    }
+    std::cout << "Encrypted message: " << encryptedMessage << "\n";
+
+    std::string decryptedMessage;
+
+    std::cout << "\n Decrypting message" << "\n";
+    for (char c: encryptedMessage) {
+        tolower(c);
+        std::cout << c;
+        size_t position = key.find(c);
+        c = alphabet.at(position);
+        std::cout << "-> \t" << c << "\n";
+        decryptedMessage.push_back(c);
+    }
+    std::cout << "Decrypted message: " << decryptedMessage << "\n";
+    return 0;
+}
